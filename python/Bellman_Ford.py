@@ -40,13 +40,13 @@ TREE = { 'A': [],
           'H': []
         }
 
-data_string="A->B     1,B->F    23,C->B    22,C->F    46,D->C     9,D->G    69,D->H    35,E->A    31,F->A    55,F->E    17,F->G     5,G->C     2,H->G    27"
+data_string="A->E     2,A->B     3,B->G    24,B->F    18,C->G    21,C->B     1,D->G    53,D->H    33,D->C    28,F->A     3,F->G     8,F->E    12,H->G    20"
 
 for data in data_string.split(","):
     TREE[data[0]].append((data[3], int(data[4:])))
 print TREE
 
-d =  Bellman_Ford(TREE, 3, 'H')
+d =  Bellman_Ford(TREE, 3, 'D')
 print_dict(d)
 
 

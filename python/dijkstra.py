@@ -3,7 +3,7 @@ def print_dict(dt):
     keys = dt.keys()
     keys.sort()
     for elem in keys:
-        print dt[elem],
+        print dt[elem][0],
     print
 
 def Dijkstra(arbol, node, last = None):
@@ -64,4 +64,4 @@ for data in data_string.split(","):
 
 print TREE
 
-print_dict(Dijkstra(TREE, 'H', 'A'))
+print_dict(Dijkstra(TREE, 'D', 'F'))

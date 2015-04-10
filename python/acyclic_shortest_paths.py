@@ -40,14 +40,14 @@ TREE = { 'A': [],
           'H': []
         }
 
-ORDER = ['H', 'G', 'C' ,'D' ,'B', 'A', 'F', 'E']
+ORDER = ['E', 'A', 'B', 'F', 'G', 'C', 'H', 'D']
 
 
-data_string="A->B     1,B->F    23,C->B    22,C->F    46,D->C     9,D->G    69,D->H    35,E->A    31,F->A    55,F->E    17,F->G     5,G->C     2,H->G    27"
+data_string="A->B    24,A->F    12,B->C    22,B->F     5,C->D    32,C->H     1,E->A    33,E->F    51,F->C    32,F->G    18,G->C    13,G->H     5,H->D    39"
 
 for data in data_string.split(","):
     TREE[data[0]].append((data[3], int(data[4:])))
 
 print TREE
-print_dict(acyclic_shortest_paths(TREE, ORDER, 'A'))
+print_dict(acyclic_shortest_paths(TREE, ORDER, 'C'))
 
