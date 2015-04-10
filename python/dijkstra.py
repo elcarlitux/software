@@ -20,10 +20,10 @@ def Dijkstra(arbol, node, last = None):
           'G': [float('Inf'), False],
           'H': [float('Inf'), False]
         }
-    
+
     dist[node][1] = True
     dist[node][0] = 0
-    
+
     actual = node
     finished = False
     while not finished:
@@ -41,15 +41,14 @@ def Dijkstra(arbol, node, last = None):
         else:
             finished = True
             m = float('Inf')
-            for i in range(0, len(dist)): 
+            for i in range(0, len(dist)):
                 if dist.values()[i][1] == False:
                     if dist.values()[i][0] < m:
                         m = dist.values()[i][0]
                         actual = dist.keys()[i]
                         finished = False
-                
-    return dist        
-        
-print Dijkstra(TREE, 'F', 'H')    
 
-            
+    return dist
+
+print Dijkstra(TREE, 'F', 'H')
+print Dijkstra(TREE, 'F', 'H')
