@@ -1,14 +1,10 @@
-TREE = { 'A': [('B', 26), ('E', 2)],
-          'B': [('C', 3)],
-          'C': [],
-          'D': [('C', 17)],
-          'E': [],
-          'F': [('A', 15),('B', 49),('C', 53),('E', 22),('G', 4)],
-          'G': [('C', 49), ('H', 27)],
-          'H': [('C', 16), ('D', 1)]
-        }
 
-print TREE
+def print_dict(dt):
+    keys = dt.keys()
+    keys.sort()
+    for elem in keys:
+        print dt[elem],
+    print
 
 def Dijkstra(arbol, node, last = None):
     dist = { 'A': [float('Inf'), False],
@@ -50,4 +46,22 @@ def Dijkstra(arbol, node, last = None):
 
     return dist
 
-print Dijkstra(TREE, 'F', 'H')
+
+TREE = { 'A': [],
+          'B': [],
+          'C': [],
+          'D': [],
+          'E': [],
+          'F': [],
+          'G': [],
+          'H': []
+        }
+
+data_string="A->B     1,B->F    23,C->B    22,C->F    46,D->C     9,D->G    69,D->H    35,E->A    31,F->A    55,F->E    17,F->G     5,G->C     2,H->G    27"
+
+for data in data_string.split(","):
+    TREE[data[0]].append((data[3], int(data[4:])))
+
+print TREE
+
+print_dict(Dijkstra(TREE, 'H', 'A'))

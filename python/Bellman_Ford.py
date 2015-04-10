@@ -1,14 +1,9 @@
-TREE = { 'A': [('E', 1)],
-          'B': [('G', 3), ('A',14)],
-          'C': [('B',38)],
-          'D': [('C', 63), ('H',31)],
-          'E': [],
-          'F': [('B', 25),('A', 45),('E',24)],
-          'G': [('C', 24), ('F', 25)],
-          'H': [('C', 23), ('G', 8)]
-        }
-
-print TREE    
+def print_dict(dt):
+    keys = dt.keys()
+    keys.sort()
+    for elem in keys:
+        print dt[elem],
+    print
 
 def Bellman_Ford(arbol, iters, start):
     dist = { 'A': float('Inf'),
@@ -20,18 +15,38 @@ def Bellman_Ford(arbol, iters, start):
           'G': float('Inf'),
           'H': float('Inf')
         }
-    
+
     dist[start[0]] = 0
     for it in range(0, iters):
-        for node in dist.keys():        
+        keys = dist.keys()
+        keys.sort()
+        for node in keys:
             for i in range(0, len(arbol[node])):
                 d = arbol[node][i][1] + dist[node]
                 if d < dist[arbol[node][i][0]]:
                     dist[arbol[node][i][0]] = d
+#        print_dict(dist)
 
-        
+
     return dist
-print Bellman_Ford(TREE, 3, 'D')  
 
+TREE = { 'A': [],
+          'B': [],
+          'C': [],
+          'D': [],
+          'E': [],
+          'F': [],
+          'G': [],
+          'H': []
+        }
+
+data_string="A->B     1,B->F    23,C->B    22,C->F    46,D->C     9,D->G    69,D->H    35,E->A    31,F->A    55,F->E    17,F->G     5,G->C     2,H->G    27"
+
+for data in data_string.split(","):
+    TREE[data[0]].append((data[3], int(data[4:])))
+print TREE
+
+d =  Bellman_Ford(TREE, 3, 'H')
+print_dict(d)
 
 

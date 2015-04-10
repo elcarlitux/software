@@ -1,17 +1,10 @@
-TREE = { 'A': [('B', 29), ('E', 83), ('F', 40)],
-          'B': [('C', 31), ('F',7),('G',43)],
-          'C': [('D',38)],
-          'D': [('H', 3)],
-          'E': [],
-          'F': [('E', 39),('G', 27)],
-          'G': [('C', 2), ('D', 39),('H',16)],
-          'H': []
-        }
 
-ORDER = ['A', 'B', 'F' ,'E' ,'G', 'C', 'D', 'H']
-
-
-print TREE
+def print_dict(dt):
+    keys = dt.keys()
+    keys.sort()
+    for elem in keys:
+        print dt[elem],
+    print
 
 def acyclic_shortest_paths(arbol, order, last = None):
     dist = { 'A': float('Inf'),
@@ -35,5 +28,26 @@ def acyclic_shortest_paths(arbol, order, last = None):
 
     return dist
 
-print acyclic_shortest_paths(TREE, ORDER, 'G')
+
+
+TREE = { 'A': [],
+          'B': [],
+          'C': [],
+          'D': [],
+          'E': [],
+          'F': [],
+          'G': [],
+          'H': []
+        }
+
+ORDER = ['H', 'G', 'C' ,'D' ,'B', 'A', 'F', 'E']
+
+
+data_string="A->B     1,B->F    23,C->B    22,C->F    46,D->C     9,D->G    69,D->H    35,E->A    31,F->A    55,F->E    17,F->G     5,G->C     2,H->G    27"
+
+for data in data_string.split(","):
+    TREE[data[0]].append((data[3], int(data[4:])))
+
+print TREE
+print_dict(acyclic_shortest_paths(TREE, ORDER, 'A'))
 
