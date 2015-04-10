@@ -51,4 +51,3 @@ def Dijkstra(arbol, node, last = None):
     return dist
 
 print Dijkstra(TREE, 'F', 'H')
-print Dijkstra(TREE, 'F', 'H')
