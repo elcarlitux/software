@@ -1,3 +1,0 @@
-include CHANGES.rst README.rst LICENSE
-recursive-include swingtix/bookkeeper *.py
-
